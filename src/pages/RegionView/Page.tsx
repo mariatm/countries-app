@@ -5,7 +5,7 @@ import VerticalBarChart from "../../components/HorizontalBarChart";
 import HorizontalBarChart from "../../components/VerticalBarChart";
 import FilterToolbar from "../../components/FilterToolbar";
 import PageContent from "../../layout/PageContent";
-import { Country } from "../interfaces";
+import { Country } from "../../utils/interfaces";
 import { getMaxPopulation } from "../../utils";
 
 const RegionPage = ({ region, countries }: { region: string, countries: Country[] }) => {

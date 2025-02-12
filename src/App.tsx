@@ -7,6 +7,7 @@ import RegionView from './pages/RegionView'
 import countriesReducer from  "./countriesSlice"
 import PageWrapper from './layout/PageWrapper'
 import NotFoundPage from './pages/NotFoundPage'
+import ErrorPage from './pages/ErrorPage'
 import './App.css'
 
 const App = () => {
@@ -14,13 +15,15 @@ const App = () => {
     <Provider store={configureStore({ reducer: countriesReducer })}>
       <BrowserRouter>
         <Routes>
-            <Route path="/" element={<PageWrapper><GlobalView /></PageWrapper>} />
+          <Route path="/" element={<PageWrapper><GlobalView /></PageWrapper>} />
 
-            <Route path="/region/:region" element={<PageWrapper><RegionView /></PageWrapper>} />
+          <Route path="/region/:region" element={<PageWrapper><RegionView /></PageWrapper>} />
 
-            <Route path="/404" element={<PageWrapper><NotFoundPage /></PageWrapper>} />
+          <Route path="/error" element={<ErrorPage />} />
 
-            <Route path="*" element={<PageWrapper><NotFoundPage /></PageWrapper>} />
+          <Route path="/404" element={<PageWrapper><NotFoundPage /></PageWrapper>} />
+
+          <Route path="*" element={<PageWrapper><NotFoundPage /></PageWrapper>} />
         </Routes>
       </BrowserRouter>
     </Provider>

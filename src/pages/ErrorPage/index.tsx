@@ -4,12 +4,12 @@ import { Box, Button, Typography } from "@mui/material";
 
 import PageContent from "../../layout/PageContent";
 
-const NotFoundPage = () => {
+const ErrorPage = () => {
   const navigate = useNavigate();
 
   return (
     <PageContent>
-      <Typography variant="h2">This page does not exist</Typography>
+      <Typography variant="h2">Oops! Something went wrong...</Typography>
 
       <Box>
         <Button onClick={() => navigate('/')} variant="contained" sx={{mt: "4rem"}}>
@@ -20,4 +20,4 @@ const NotFoundPage = () => {
   );
 };
 
-export default NotFoundPage;
+export default ErrorPage;

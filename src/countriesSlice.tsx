@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { Country, Regions } from './pages/interfaces';
+import { Country, Regions } from './utils/interfaces';
 
 export const getAllCountries = createAsyncThunk(
   'countries/getAll',

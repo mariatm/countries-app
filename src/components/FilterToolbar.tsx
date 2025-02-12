@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { grey } from '@mui/material/colors';
 
-import { Box, Button, Popover, Slider, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Typography from "@mui/material/Typography"
+import Popover from "@mui/material/Popover"
+import Slider from "@mui/material/Slider"
+
 import { FilterList } from "@mui/icons-material";
 
 interface FilterToolbarProps {
@@ -62,7 +68,6 @@ const FilterToolbar: React.FC<FilterToolbarProps> = ({ minPopulation, maxPopulat
 		else return value;
 	}
 
-	
 	const marks = [
 		{
 			value: 0,
@@ -79,42 +84,42 @@ const FilterToolbar: React.FC<FilterToolbarProps> = ({ minPopulation, maxPopulat
 	];
 
 	return (
-				<div style={{...style, top: isSM ? 56 : 64 }}>		
-					<Button aria-label="filter" onClick={handleClick} startIcon={<FilterList />}>						
-						Filter
-					</Button>
+		<div style={{...style, top: isSM ? 56 : 64 }}>		
+			<Button aria-label="filter" onClick={handleClick} startIcon={<FilterList />}>						
+				Filter
+			</Button>
 
-					<Popover
-						id={id}
-						open={open}
-						anchorEl={anchorEl}
-						onClose={handleClose}
-						anchorOrigin={{
-							vertical: 'bottom',
-							horizontal: 'left',
-						}}
-					>
-						<Typography variant="body1" sx={{ p: 2 }}>
-							Filter by Population: 
-						</Typography>
+			<Popover
+				id={id}
+				open={open}
+				anchorEl={anchorEl}
+				onClose={handleClose}
+				anchorOrigin={{
+					vertical: 'bottom',
+					horizontal: 'left',
+				}}
+			>
+				<Typography variant="body1" sx={{ p: 2 }}>
+					Filter by Population: 
+				</Typography>
 
-						<div style={{display: "flex"}}>
-							<Box sx={{ width: 200, padding: "1rem 5rem" }}>
-								<Slider
-									getAriaLabel={() => 'Temperature range'}
-									value={value}
-									onChange={handleChange}
-									valueLabelDisplay="auto"
-									valueLabelFormat={valuetext}
-									min={0}
-									max={population}
-									step={population/10}
-									marks={marks}
-								/>
-							</Box>
-						</div>
-					</Popover>
+				<div style={{display: "flex"}}>
+					<Box sx={{ width: 200, padding: "1rem 5rem" }}>
+						<Slider
+							getAriaLabel={() => 'Temperature range'}
+							value={value}
+							onChange={handleChange}
+							valueLabelDisplay="auto"
+							valueLabelFormat={valuetext}
+							min={0}
+							max={population}
+							step={population/10}
+							marks={marks}
+						/>
+					</Box>
 				</div>
+			</Popover>
+		</div>
 	);
 };
 

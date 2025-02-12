@@ -6,10 +6,10 @@ import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import { countriesByRegion } from "../../countriesSlice";
 import VerticalBarChart from "../../components/HorizontalBarChart";
 import HorizontalBarChart from "../../components/VerticalBarChart";
-
 import FilterToolbar from "../../components/FilterToolbar";
+
 import PageContent from "../../layout/PageContent";
-import { Regions, RegionsSum } from "../interfaces";
+import { Regions, RegionsSum } from "../../utils/interfaces";
 import { getMaxPopulation } from "../../utils";
 
 function getPopulationByRegion(regions: Regions) {

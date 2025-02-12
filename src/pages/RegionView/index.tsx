@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 
 import { countriesByRegion } from "../../countriesSlice";
-import { Country, Regions } from "../interfaces";
+import { Country, Regions } from "../../utils/interfaces";
 import Page from "./Page";
 
 const RegionView = () => {

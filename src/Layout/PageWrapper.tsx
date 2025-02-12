@@ -1,17 +1,24 @@
-import { ReactNode, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router";
+import { ReactNode, useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { Link, useNavigate } from "react-router"
 
-import MenuIcon from "@mui/icons-material/Menu";
-import { AppBar, IconButton, Toolbar, Typography, useMediaQuery, useTheme } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu"
+import { useMediaQuery, useTheme } from "@mui/material"
 
-import PageLoader from "../components/Loader";
-import { getAllCountries, getCountriesStatus } from "../countriesSlice";
-import Sidebar from "./Sidebar";
-import Footer from "./Footer";
+import AppBar from "@mui/material/AppBar"
+import Toolbar from "@mui/material/Toolbar"
+import Typography from "@mui/material/Typography"
+import IconButton from "@mui/material/IconButton"
+
+import PageLoader from "../components/Loader"
+import { getAllCountries, getCountriesStatus } from "../countriesSlice"
+import Sidebar from "./Sidebar"
+import Footer from "./Footer"
 
 const PageWrapper = ({ children }: { children: ReactNode }) => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
   const theme = useTheme();
   const isSM = !useMediaQuery(theme.breakpoints.up('sm'));
 
@@ -23,14 +30,21 @@ const PageWrapper = ({ children }: { children: ReactNode }) => {
 			await dispatch(getAllCountries());
 		}
 
-			fetchData();
+		fetchData();
   }, [dispatch]);
   
+	if(countriesStatus === "failed") {
+		navigate("/error");
+
+		return;
+	}	
+
 	if(countriesStatus !== "succeeded") {
 		return <PageLoader />
 	}	
+
 	return (
-		<>
+		<main>
 			<AppBar position="fixed">
 				<Toolbar>
 					<IconButton
@@ -38,12 +52,7 @@ const PageWrapper = ({ children }: { children: ReactNode }) => {
 						aria-label="open drawer"
 						onClick={() => setOpenSidebar(!openSidebar)}
 						edge="start"
-						sx={[
-							{
-								mr: 2,
-							},
-							openSidebar && { display: 'none' },
-						]}
+						sx={[{ mr: 2 }, openSidebar && { display: 'none' }]}
 					>
 						<MenuIcon />
 					</IconButton>
@@ -63,7 +72,7 @@ const PageWrapper = ({ children }: { children: ReactNode }) => {
       </div>
 
       <Footer />
-		</>
+		</main>
 	);
 };
 
