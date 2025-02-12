@@ -1,15 +1,15 @@
 import { Provider } from 'react-redux'
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit'
 import { BrowserRouter, Route, Routes } from 'react-router'
 
 import GlobalView from './pages/GlobalView'
 import RegionView from './pages/RegionView'
 import countriesReducer from  "./countriesSlice"
+import PageWrapper from './layout/PageWrapper'
+import NotFoundPage from './pages/NotFoundPage'
 import './App.css'
-import PageWrapper from './Layout/PageWrapper';
 
 const App = () => {
-
   return (
     <Provider store={configureStore({ reducer: countriesReducer })}>
       <BrowserRouter>
@@ -17,6 +17,10 @@ const App = () => {
             <Route path="/" element={<PageWrapper><GlobalView /></PageWrapper>} />
 
             <Route path="/region/:region" element={<PageWrapper><RegionView /></PageWrapper>} />
+
+            <Route path="/404" element={<PageWrapper><NotFoundPage /></PageWrapper>} />
+
+            <Route path="*" element={<PageWrapper><NotFoundPage /></PageWrapper>} />
         </Routes>
       </BrowserRouter>
     </Provider>

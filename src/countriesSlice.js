@@ -39,7 +39,9 @@ const countriesSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(getAllCountries.fulfilled, (state, action) => {
-        const countriesByRegion = action.payload.reduce((acc, country) => {
+        const countriesByRegion = action.payload
+          .sort((a, b) => b.population - a.population)
+          .reduce((acc, country) => {
           const { region } = country;
           if (!acc[region]) {
             acc[region] = [];

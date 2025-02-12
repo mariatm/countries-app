@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MenuIcon from "@mui/icons-material/Menu";
 import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
 
+import PageLoader from "../components/Loader";
 import { getAllCountries, getCountriesStatus } from "../countriesSlice";
 import Sidebar from "./Sidebar";
 import { Link } from "react-router";
@@ -22,8 +23,8 @@ const PageWrapper = ({ children }) => {
 			fetchData();
   }, [dispatch]);
   
-	if(countriesStatus === "idle" || countriesStatus === "loading") {
-		return <h1>Loading...</h1>
+	if(countriesStatus !== "succeeded") {
+		return <PageLoader />
 	}	
 	return (
 		<>
@@ -54,7 +55,9 @@ const PageWrapper = ({ children }) => {
 
 			<Sidebar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
 
-			{children}
+      <div style={{ marginTop: 64, width: '100%' }}>
+			  {children}
+      </div>
 		</>
 	);
 };
