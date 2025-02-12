@@ -44,7 +44,7 @@ const PageWrapper = ({ children }: { children: ReactNode }) => {
 	}	
 
 	return (
-		<main>
+		<>
 			<AppBar position="fixed">
 				<Toolbar>
 					<IconButton
@@ -72,7 +72,7 @@ const PageWrapper = ({ children }: { children: ReactNode }) => {
       </div>
 
       <Footer />
-		</main>
+		</>
 	);
 };
 
