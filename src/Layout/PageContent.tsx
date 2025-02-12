@@ -1,5 +1,7 @@
-const PageContent = ({ children }) => (
-		<div style={{  margin: "0 auto", padding: "4rem", textAlign: "center"		}}>	
+import { ReactNode } from "react";
+
+const PageContent = ({ children }: { children: ReactNode }) => (
+		<div style={{  margin: "0 auto", padding: "5rem 4rem 3rem 4rem", textAlign: "center"		}}>	
 			{children}
 		</div>
 	);

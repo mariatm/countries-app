@@ -43,6 +43,11 @@ const Sidebar: React.FC<SidebarProps> = ({ openSidebar, setOpenSidebar }) => {
       <Divider />
 
       <List>
+      <ListItem disablePadding key={`global`}>
+            <ListItemButton onClick={()=> navigate("/")}>
+              <ListItemText primary="Global" />
+            </ListItemButton>
+          </ListItem>
         {['Europe', 'Americas', 'Africa', 'Asia', 'Antarctic'].map((name) => (
           <ListItem disablePadding key={`continent_${name}`}>
             <ListItemButton onClick={()=> navigate(`/region/${name}`)}>

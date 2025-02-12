@@ -68,25 +68,10 @@ const HorizontalBarChart = ({ population, names }: HorizontalBarChartProps) => {
           labels: names,
           datasets: [
           {
-            label: 'Dataset 1',
+            label: 'Population',
             data: population,
-            borderColor: [
-              'rgba(108, 9, 31, 0.63)',
-              'rgba(112, 66, 19, 0.67)',
-              'rgba(129, 93, 9, 0.68)',
-              'rgba(10, 85, 85, 0.7)',
-              'rgba(9, 74, 118, 0.54)',
-              'rgba(44, 19, 94, 0.72)'
-            ],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
-              'rgba(255, 205, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-
-            ],
+            borderColor:  'rgba(9, 74, 118, 0.54)',
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
             borderWidth: 2,
           },
         ]}}
